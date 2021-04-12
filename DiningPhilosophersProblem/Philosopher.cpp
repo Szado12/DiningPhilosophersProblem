@@ -65,10 +65,11 @@ void Philosopher::PutRightFork()
 
 void Philosopher::Print()
 {
-	string left = ((hasLeft) ? "In use" : "Not avaible");
-	string right = ((hasRight) ? "In use" : "Not avaible");
+	string left = ((hasLeft) ? "Owned" : "Not owned");
+	string right = ((hasRight) ? "Owned" : "Not owned");
 
-	printf("Philosopher %2d Meals %d State: %10s Left Fork: %12s Right Fork: %12s \n", this->id, this->meals,this->state.c_str(),left.c_str(),right.c_str());
+	printf("Philosopher %2d Meals: %3d State: %10s Left Fork: %12s Right Fork: %12s \n", this->id, this->meals,this->state.c_str(),left.c_str(),right.c_str());
+
 }
 
 void Philosopher::Simulate()
