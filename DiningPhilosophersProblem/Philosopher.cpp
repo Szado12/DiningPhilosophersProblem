@@ -69,6 +69,7 @@ void Philosopher::Print()
 	string right = ((hasRight) ? "Owned" : "Not owned");
 
 	printf("Philosopher %2d Meals: %3d State: %10s Left Fork: %12s Right Fork: %12s \n", this->id, this->meals,this->state.c_str(),left.c_str(),right.c_str());
+
 }
 
 void Philosopher::Simulate()

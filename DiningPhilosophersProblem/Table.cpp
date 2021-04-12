@@ -39,8 +39,7 @@ void Table::StartSimulation()
 	printing = new thread(&Table::Print,this);
 }
 
-void Table::StopSimulation()
-{
+
 	for (int i = 0; i < NumberOfP; i++)
 	{
 		philosophers->at(i)->StopSimulation();
@@ -52,5 +51,6 @@ void Table::StopSimulation()
 	}
 	simulation = false;
 	printing->join();
+
 }
 

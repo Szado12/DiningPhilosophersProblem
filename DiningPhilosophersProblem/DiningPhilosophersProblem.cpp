@@ -1,10 +1,11 @@
-﻿#include <iostream>
+#include <iostream>
 #include <conio.h>
 #include "Table.h"
 using namespace std;
 int main()
 {
     srand(time(NULL));
+
     int philosophers, eatingTime, sleepingTime;
 
     cout << "Set number of philosophers:" << endl;
@@ -17,6 +18,7 @@ int main()
     table->StartSimulation();
     while (_getch() != 'q');
     table->StopSimulation();
+
     return 0;
 }
 
