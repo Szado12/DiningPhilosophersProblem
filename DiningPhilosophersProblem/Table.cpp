@@ -16,7 +16,18 @@ Table::Table(int amount, int sleepTime, int eatTime)
 	}
 }
 void Table::Print() {
+	while (simulation) {
+		for (int j = 0; j < 10; j++)
+		{
+			system("cls");
+			for (int i = 0; i < NumberOfP; i++)
+			{
+				philosophers->at(i)->Print();
+			}
+			this_thread::sleep_for(chrono::milliseconds(2000));
 
+		}
+	}
 }
 void Table::StartSimulation()
 {
@@ -24,18 +35,12 @@ void Table::StartSimulation()
 	{
 		threads->push_back(new thread(&Philosopher::Simulate,philosophers->at(i)));
 	}
-	for (int j = 0; j < 10; j++)
-	{
-		system("cls");
-		for (int i = 0; i < NumberOfP; i++)
-		{
-			philosophers->at(i)->Print();
-		}
-		this_thread::sleep_for(chrono::milliseconds(10000));
+	simulation = true;
+	printing = new thread(&Table::Print,this);
+}
 
-	}
-	
-
+void Table::StopSimulation()
+{
 	for (int i = 0; i < NumberOfP; i++)
 	{
 		philosophers->at(i)->StopSimulation();
@@ -45,5 +50,7 @@ void Table::StartSimulation()
 	{
 		philosophers->at(i)->Print();
 	}
+	simulation = false;
+	printing->join();
 }
 
